@@ -4,14 +4,12 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerLogin', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        sh '''
-                            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                            docker build -t roberta-build-test:v1.0 .
-                            docker tag roberta-build-test:v1.0 amiraniv/roberta-build-test:v1.1
-                            docker push
-                        '''
-                    }
+                    sh '''
+                        docker login 
+                        docker build -t roberta-build-test:v1.0 .
+                        docker tag roberta-build-test:v1.0 amiraniv/roberta-build-test:v1.1
+                        docker push
+                    '''
                 }
             }
         }
