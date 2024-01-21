@@ -9,7 +9,7 @@ pipeline {
                             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                             docker build -t roberta-build-test:v1.0 .
                             docker tag roberta-build-test:v1.0 amiraniv/roberta-build-test:v1.1
-                            docker push
+                            docker push amiraniv/roberta-build-test:v1.1
                         '''
                     }
                 }
