@@ -15,5 +15,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Trigger Deploy') {
+            steps {
+                build job: 'Roberta-Deploy', wait: false, parameters: [
+                    string(name: 'ROBERTA_IMAGE_URL', value: 'amiraniv/roberta-build-test:v1.1')
+                ]
+            }
+        }
     }
 }
